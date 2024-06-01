@@ -1,6 +1,5 @@
-<div>
+<div class=" my-3">
     <h3 class="my-font text-warning">List of Task...</h3>
-    <div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for task in tasks %}
             <div class="col">
@@ -12,7 +11,7 @@
                     <p class="card-text">{{task.assign_date}}</p>
                     <hr>
                     <p class="card-text">{{task.description}}</p>
-                    <p>Categories:</p>
+                    <p class="m-0">Categories:</p>
                     {% for cat in task.categories.all %}
                         <button class="btn btn-outline-light m-1" disabled>{{ cat.name }}</button>
                     {% empty %}
