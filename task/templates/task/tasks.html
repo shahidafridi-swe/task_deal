@@ -1,0 +1,35 @@
+<div>
+    <h3 class="my-font text-warning">List of Task...</h3>
+    <div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for task in tasks %}
+            <div class="col">
+                <div class="card bg-transparent text-white border-info text-center">
+                  
+                  <div class="card-body">
+                    <h5 class="card-title">Task ID: {{task.id}}</h5>
+                    <h3 class="card-title text-info">{{task.title}}</h3>
+                    <p class="card-text">{{task.assign_date}}</p>
+                    <hr>
+                    <p class="card-text">{{task.description}}</p>
+                    <p>Categories:</p>
+                    {% for cat in task.categories.all %}
+                        <button class="btn btn-outline-light m-1" disabled>{{ cat.name }}</button>
+                    {% empty %}
+                        <button class="btn btn-outline-light" disabled>No Categories</button>
+                     {% endfor %}
+                     <hr>
+                     {% if task.is_completed == True %}
+                        <button class="btn btn-outline-info" disabled>Completed</button>
+                     {% else %}
+                        <a class="btn btn-outline-warning mx-2" href="{% url "update_task" task.id %}" ><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-outline-danger mx-2" href="{% url "delete_task" task.id %}" ><i class="fa fa-trash"></i></a>
+                     {% endif %}
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+    </div>
+</div>
